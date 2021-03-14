@@ -40,6 +40,7 @@ const Answer = () => {
             type="text"
             name="answer"
             value={answer}
+            placeholder="write here"
             onChange={handleUserInput}
          /> <br />
          <input type="submit" value="Submit" />

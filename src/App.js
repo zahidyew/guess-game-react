@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Guess the picture </h1>
+      <h1> Guess Game </h1>
       <CounterContext.Provider value={value}>
         <Counter />
         <ImageContext.Provider value={imageValue}>
