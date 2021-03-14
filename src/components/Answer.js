@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import CounterContext from '../contexts/CounterContext';
+import ImageContext from '../contexts/ImageContext';
 
 const Answer = () => {
    const [answer, setAnswer] = useState("");
    const { counter, setCounter } = useContext(CounterContext);
+   const { image, setImage } = useContext(ImageContext);
 
    const handleUserInput = (event) => {
       setAnswer(event.target.value);
@@ -17,13 +19,19 @@ const Answer = () => {
    };
 
    const checkAnswer = (ans) => {
-      const test = "cat";
-      //if (ans === "") {}
-      if (ans === test) {
+      if (ans === image.name) {
          setCounter(counter + 1);
       } else {
          alert("Wrong answer.");
       }
+      nextImage();
+   };
+
+   const nextImage = () => {
+      setImage({
+         url: "https://tinyurl.com/4u8a64t3",
+         name: "dog"
+      });
    };
 
    return (
