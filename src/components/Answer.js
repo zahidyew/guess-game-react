@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import CounterContext from '../contexts/CounterContext';
 import ImageContext from '../contexts/ImageContext';
+import images from '../data/Images';
 
 const Answer = () => {
    const [answer, setAnswer] = useState("");
    const { counter, setCounter } = useContext(CounterContext);
    const { image, setImage } = useContext(ImageContext);
+   const [num, setNum] = useState(1);
 
    const handleUserInput = (event) => {
       setAnswer(event.target.value);
@@ -24,14 +26,18 @@ const Answer = () => {
       } else {
          alert("Wrong answer.");
       }
+      setAnswer("");
       nextImage();
    };
 
    const nextImage = () => {
-      setImage({
-         url: "https://tinyurl.com/4u8a64t3",
-         name: "dog"
-      });
+      if (num < images.length) {
+         setImage(images[num]);
+         setNum(num + 1);
+      } else {
+         const submitBtn = document.getElementById("submitBtn");
+         submitBtn.disabled = true;
+      }
    };
 
    return (
@@ -43,7 +49,7 @@ const Answer = () => {
             placeholder="write here"
             onChange={handleUserInput}
          /> <br />
-         <input type="submit" value="Submit" />
+         <input id="submitBtn" type="submit" value="Submit" />
       </form>
    );
 };

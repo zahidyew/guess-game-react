@@ -5,12 +5,10 @@ import CounterContext from './contexts/CounterContext';
 import Answer from './components/Answer';
 import { ImageHolder } from './components/ImageHolder';
 import ImageContext from './contexts/ImageContext';
+import images from './data/Images';
 
 function App() {
-  const imageObj = {
-    url: "https://tinyurl.com/448pmyy6",
-    name: "cat"
-  };
+  const imageObj = images[0];
   const [counter, setCounter] = useState(0);
   const [image, setImage] = useState(imageObj);
   //const value = useMemo(() => ({ counter, setCounter }), [counter, setCounter]);
